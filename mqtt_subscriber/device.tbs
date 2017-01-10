@@ -1,0 +1,46 @@
+include "global.tbh"
+
+dim connect_lost as no_yes=NO
+
+'====================================================================
+sub callback_mqtt_connect_ok()
+	pat.play(PAT_GREEN_ON,PL_PAT_CANINT)
+	mqtt_sub("LED/#",QOS_AT_LEAST_ONCE)
+end sub
+
+sub callback_mqtt_connect_lost()
+	pat.play(PAT_GREEN_BLINKING,PL_PAT_CANINT)
+	connect_lost=YES
+end sub
+
+sub callback_mqtt_notif(byref topic as string,byref data as string)
+	const STR_LED		="LED"
+	const STR_RED		="RED"
+	const STR_YELLOW	="YELLOW"
+	const STR_GREEN		="GREEN"
+
+	dim pos as byte
+	pos=instr(1,topic,"/",1)
+	
+	dim x as string
+	x=mid(topic,1,pos-1)
+	if x<>STR_LED then exit sub
+	
+	x=mid(topic,pos+1,len(topic)-pos)
+	if x=STR_RED then
+		io.num=LED_RED
+	else if x=STR_YELLOW then
+		io.num=LED_YELLOW
+	else if x=STR_GREEN then
+		io.num=LED_GREEN
+	end if
+
+	if data ="1" then
+		io.state=LOW
+	else if data="0" then
+		io.state=HIGH
+	end if
+end sub
+
+sub  callback_mqtt_sub_ok()
+end sub

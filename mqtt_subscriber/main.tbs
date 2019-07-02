@@ -24,18 +24,12 @@ sub on_sys_init()
 	io.enabled=YES
 
 	mqtt_start()
-	if mqtt_connect(MQTT_SERVER_HOST,1883,MQTT_NAME,MQTT_PASSWORD,30)=NG then
-		'In here, we cannot make a tcp link to the host ...
-		connect_lost=YES
-	end if
+	mqtt_connected = mqtt_connect(MQTT_SERVER_HOST,1883,MQTT_NAME,MQTT_PASSWORD,30)
 end sub
 
 sub on_sys_timer()
-	if connect_lost=YES then
-		'Try to establish the tcp link with mqtt host ...
-		if mqtt_reconnect()=OK then
-			connect_lost=NO
-		end if
+	if (mqtt_connected = false) then
+		mqtt_connected = mqtt_reconnect()	
 	end if
 	mqtt_proc_timer()
 end sub

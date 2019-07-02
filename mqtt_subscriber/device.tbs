@@ -1,6 +1,6 @@
 include "global.tbh"
 
-dim connect_lost as no_yes=NO
+dim mqtt_connected as boolean
 
 '====================================================================
 sub callback_mqtt_connect_ok()
@@ -10,7 +10,7 @@ end sub
 
 sub callback_mqtt_connect_lost()
 	pat.play(PAT_GREEN_BLINKING,PL_PAT_CANINT)
-	connect_lost=YES
+	mqtt_connected=false
 end sub
 
 sub callback_mqtt_notif(byref topic as string,byref data as string)

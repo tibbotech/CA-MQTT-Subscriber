@@ -8,9 +8,9 @@ const LED_GREEN		=PL_IO_NUM_11_TX1
 
 const MQTT_NAME="SUBSCRIBER"				'<<<<<<<<====== MQTT server login name
 const MQTT_PASSWORD ="TESTTEST"				'<<<<<<<<====== MQTT server login password
-const OWN_IP="192.168.1.244"				'<<<<<<<<====== This is the IP address of this device
-const SUBSCRIBE_DEMO_GATEWAY="192.168.1.1"	'<<<<<<<<====== Gateway IP address
-const MQTT_SERVER_HOST="192.168.1.104"		'<<<<<<<<====== MQTT server IP
+const OWN_IP="10.0.0.244"					'<<<<<<<<====== This is the IP address of this device
+const SUBSCRIBE_DEMO_GATEWAY="10.0.0.138"	'<<<<<<<<====== Gateway IP address
+const MQTT_SERVER_HOST="18.184.30.148"		'<<<<<<<<====== MQTT server IP
 
 const PAT_GREEN_BLINKING=	"G-~"			'opening TCP link to MQTT server
 const PAT_GREEN_ON=			"G~"			'server connection established
@@ -21,4 +21,4 @@ include "sock\trunk\sock.tbh"
 include "mqtt\trunk\mqtt.tbh"
 'DECLARATIONS--------------------------------------------------------
 
-declare connect_lost as no_yes
+declare mqtt_connected as boolean

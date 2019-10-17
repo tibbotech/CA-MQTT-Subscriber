@@ -1,6 +1,7 @@
 'DEFINES-------------------------------------------------------------
 
 #define MQTT_DEBUG_PRINT 1
+#define MQTT_APP_CLIENT_ID "SUBSCRIBER"
 
 const LED_RED		=PL_IO_NUM_9_TX0
 const LED_YELLOW	=PL_IO_NUM_32

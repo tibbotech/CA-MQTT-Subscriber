@@ -1,0 +1,17 @@
+{ "platforms": [
+    "EM1000",
+    "EM1000N",
+    "EM1000W",
+    "EM1001N",
+    "EM1001W",
+    "EM2000W",
+    "NB1010",
+    "NB1010N",
+    "NB1010W",
+    "TPP2N",
+    "TPP2W",    
+    "TPP2W(G2)",
+    "TPP3N",
+    "TPP3W",
+    "TPP3W(G2)"
+]}
